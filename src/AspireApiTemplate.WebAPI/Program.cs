@@ -105,7 +105,10 @@ internal class Program
                     // Node: The SqlClientInstrumentation is not included, because we do not really use raw SQL commands, but hangfire uses them fairly often, which is not relevant.
                     // Also the EntityFramework Traces would be duplicated.
                     // The DB statements are captured to see which SQL commands are executed.
-                    .AddEntityFrameworkCoreInstrumentation(o => o.SetDbStatementForText = true)
+                    .AddEntityFrameworkCoreInstrumentation(o => o.EnrichWithIDbCommand = (activity, command) =>
+                    {
+                        activity.SetTag("db.statement", command.CommandText);
+                    })
                     // HttpClientInstrumentation adds tracing for outgoing HTTP requests made by the application.
                     .AddHttpClientInstrumentation();
             })

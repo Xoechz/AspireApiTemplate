@@ -66,15 +66,16 @@ public class Worker(IServiceProvider serviceProvider,
         {
             // Seed the database here
             await using var transaction = await dbContext.Database.BeginTransactionAsync(cancellationToken);
-            dbContext.Examples.RemoveRange(dbContext.Examples);
 
-            await dbContext.Examples.AddRangeAsync(
-                [
-                    new Example { ExampleKey = 1 },
-                    new Example { ExampleKey = 2 }
-                ], cancellationToken);
+            // can be done via sql files, sql code or ef core code
+            await dbContext.Database.ExecuteSqlRawAsync(@"
+                SET IDENTITY_INSERT dbo.Examples ON;
 
-            await dbContext.SaveChangesAsync(cancellationToken);
+                INSERT INTO dbo.Examples (ExampleKey) VALUES (1), (2);
+
+                SET IDENTITY_INSERT dbo.Examples OFF;
+                ");
+
             await transaction.CommitAsync(cancellationToken);
         });
     }
