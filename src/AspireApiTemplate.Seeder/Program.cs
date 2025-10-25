@@ -8,7 +8,7 @@ using Microsoft.Extensions.Hosting;
 var builder = Host.CreateApplicationBuilder(args);
 builder.Services.AddHostedService<Worker>();
 
-var connectionString = builder.Configuration.GetConnectionString("DB")
+var connectionString = builder.Configuration.GetConnectionString("DBTEMPLATENAME")
     ?? throw new InvalidOperationException("Connection String DB is not configured.");
 
 builder.Services.AddDbContext<TemplateContext>(options => options.UseSqlServer(connectionString));

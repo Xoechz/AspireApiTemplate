@@ -22,12 +22,14 @@
             "type": "parameter",
             "datatype": "int",
             "defaultValue": "5799",
+            "replaces": "0123456789",
             "description": "HTTPS port for the WebAPI endpoint"
         },
         "DbName": {
             "type": "parameter",
             "datatype": "string",
             "defaultValue": "DB",
+            "replaces": "DBTEMPLATENAME",
             "description": "Database name for initial SQL Server database"
         }
     },

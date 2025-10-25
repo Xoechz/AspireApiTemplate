@@ -23,7 +23,7 @@ internal class Program
         });
 
         // Add db context
-        var connectionString = builder.Configuration.GetConnectionString("DB")
+        var connectionString = builder.Configuration.GetConnectionString("DBTEMPLATENAME")
             ?? throw new InvalidOperationException("Connection String DB is not configured.");
         builder.Services.AddDbContext<TemplateContext>(options => options.UseSqlServer(connectionString));
 
