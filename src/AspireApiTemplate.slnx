@@ -1,0 +1,13 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="AspireApiTemplate.AppHost/AspireApiTemplate.AppHost.csproj" />
+  <Project Path="AspireApiTemplate.Contracts/AspireApiTemplate.Contracts.csproj" />
+  <Project Path="AspireApiTemplate.Data/AspireApiTemplate.Data.csproj" />
+  <Project Path="AspireApiTemplate.Logic/AspireApiTemplate.Logic.csproj" />
+  <Project Path="AspireApiTemplate.Seeder/AspireApiTemplate.Seeder.csproj" />
+  <Project Path="AspireApiTemplate.WebAPI/AspireApiTemplate.WebAPI.csproj" />
+</Solution>
