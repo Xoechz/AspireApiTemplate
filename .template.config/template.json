@@ -1,0 +1,75 @@
+{
+    "$schema": "http://json.schemastore.org/template",
+    "author": "Xoechz",
+    "classifications": [
+        "Web",
+        "Aspire",
+        "API",
+        "Monolith"
+    ],
+    "identity": "AspireApiTemplate.Monolith.Template",
+    "name": "Aspire Monolith API (Aspire + Seeder)",
+    "shortName": "aspire-monolith",
+    "sourceName": "AspireApiTemplate",
+    "description": "Monolithic WebAPI with Aspire AppHost, SQL Server resource, data seeder, layered projects (Data, Logic, Contracts).",
+    "tags": {
+        "language": "C#",
+        "type": "solution"
+    },
+    "preferNameDirectory": true,
+    "symbols": {
+        "PortHttps": {
+            "type": "parameter",
+            "datatype": "int",
+            "defaultValue": "5799",
+            "description": "HTTPS port for the WebAPI endpoint"
+        },
+        "DbName": {
+            "type": "parameter",
+            "datatype": "string",
+            "defaultValue": "DB",
+            "description": "Database name for initial SQL Server database"
+        }
+    },
+    "primaryOutputs": [
+        {
+            "path": "src/AspireApiTemplate.AppHost/AspireApiTemplate.AppHost.csproj"
+        },
+        {
+            "path": "src/AspireApiTemplate.WebAPI/AspireApiTemplate.WebAPI.csproj"
+        },
+        {
+            "path": "src/AspireApiTemplate.Data/AspireApiTemplate.Data.csproj"
+        },
+        {
+            "path": "src/AspireApiTemplate.Logic/AspireApiTemplate.Logic.csproj"
+        },
+        {
+            "path": "src/AspireApiTemplate.Contracts/AspireApiTemplate.Contracts.csproj"
+        },
+        {
+            "path": "src/AspireApiTemplate.Seeder/AspireApiTemplate.Seeder.csproj"
+        }
+    ],
+    "postActions": [
+        {
+            "actionId": "E2E2DD2E-A4D3-468A-B66E-6FA161443B9F",
+            "description": "Restore NuGet packages",
+            "manualInstructions": [
+                {
+                    "text": "Run 'dotnet restore'"
+                }
+            ],
+            "args": {
+                "targetFiles": "**/*.csproj"
+            },
+            "continueOnError": true
+        }
+    ],
+    "sources": [
+        {
+            "source": "./",
+            "target": "./"
+        }
+    ]
+}
