@@ -1,3 +1,4 @@
+using AspireApiTemplate.Contracts.Services;
 using AspireApiTemplate.Logic.Services;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -9,7 +10,7 @@ public static class ServiceCollectionExtension
 
     public static IServiceCollection AddLogicServices(this IServiceCollection services)
     {
-        services.AddScoped<ExampleService>();
+        services.AddScoped<IExampleService, ExampleService>();
 
         return services;
     }

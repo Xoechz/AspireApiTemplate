@@ -8,6 +8,8 @@ using AspireApiTemplate.Logic.Extensions;
 using AspireApiTemplate.Data;
 using Microsoft.EntityFrameworkCore;
 
+namespace AspireApiTemplate.WebAPI;
+
 internal class Program
 {
     #region Private Methods
@@ -77,7 +79,7 @@ internal class Program
         services.AddSingleton(activitySource);
 
         // OpenTelemetry configuration
-        var otelBuilder = services.AddOpenTelemetry()
+        services.AddOpenTelemetry()
             // Add the service name to the resource attributes so application insights displays it correctly in the application map
             .ConfigureResource(rb => rb.AddService(serviceName))
             // Add the logging provider to export logs of the ILogger interface

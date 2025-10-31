@@ -1,20 +1,21 @@
 using AspireApiTemplate.Contracts.Models;
-using AspireApiTemplate.Logic.Services;
+using AspireApiTemplate.Contracts.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AspireApiTemplate.Contracts.Controllers;
+namespace AspireApiTemplate.WebAPI.Controllers;
 
-public class ExampleController(ExampleService exampleService) : ControllerBase
+[Route("[controller]")]
+public class ExampleController(IExampleService exampleService) : ControllerBase
 {
     #region Private Members
 
-    private readonly ExampleService _exampleService = exampleService;
+    private readonly IExampleService _exampleService = exampleService;
 
     #endregion Private Members
 
     #region Public Methods
 
-    [HttpGet("examples")]
+    [HttpGet]
     public ActionResult<IEnumerable<ExampleCore>> GetExamples()
     {
         var examples = _exampleService.GetExamples();

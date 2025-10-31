@@ -15,7 +15,7 @@ var seeder = builder.AddProject<Projects.AspireApiTemplate_Seeder>("DatabaseSeed
 
 var server = builder.AddProject<Projects.AspireApiTemplate_WebAPI>("WebAPI")
     .WithIconName("Server")
-    .WithHttpsEndpoint(0123456789, name: "https") // for HTTP/1.1, HTTP/2
+    .WithHttpsEndpoint(0123456789, name: "https-tcp") // for HTTP/1.1, HTTP/2
     .WithEndpoint("https-udp", e =>
     {
         e.Port = 0123456789;
@@ -23,7 +23,7 @@ var server = builder.AddProject<Projects.AspireApiTemplate_WebAPI>("WebAPI")
         e.Protocol = ProtocolType.Udp;
         e.UriScheme = "https";
     })
-    .WithUrlForEndpoint("https", e => e.Url = "https://localhost:0123456789/swagger")
+    .WithUrlForEndpoint("https-tcp", e => e.Url = "https://localhost:0123456789/swagger")
     .WithUrlForEndpoint("https-udp", e => e.Url = "https://localhost:0123456789/swagger")
     .WithReference(db)
     .WaitFor(seeder);

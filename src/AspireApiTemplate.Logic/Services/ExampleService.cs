@@ -1,9 +1,10 @@
 using AspireApiTemplate.Contracts.Models;
+using AspireApiTemplate.Contracts.Services;
 using AspireApiTemplate.Data;
 
 namespace AspireApiTemplate.Logic.Services;
 
-public class ExampleService(TemplateContext context)
+public class ExampleService(TemplateContext context) : IExampleService
 {
     #region Private Members
 
